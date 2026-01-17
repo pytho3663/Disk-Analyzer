@@ -34,12 +34,6 @@ echo SUCCESS: Java environment detected
 :: Check project files
 echo.
 echo [2/4] Checking project files...
-if not exist "lib" (
-    echo ERROR: lib directory not found!
-    echo Please ensure you are running from the correct directory
-    pause
-    exit /b 1
-)
 
 if not exist "target\classes" (
     echo WARNING: Compiled classes not found!
@@ -48,7 +42,7 @@ if not exist "target\classes" (
     
     :: Try to compile
     echo Compiling source files...
-    javac -cp "lib/*;src/main/java" src/main/java/com/diskanalyzer/FinalDiskAnalyzer.java -d target/classes
+    javac -cp "src/main/java" src/main/java/com/diskanalyzer/FinalDiskAnalyzer.java -d target/classes
     
     if %errorlevel% neq 0 (
         echo ERROR: Compilation failed!
@@ -65,7 +59,7 @@ if not exist "target\classes" (
 echo.
 echo [3/4] Setting runtime parameters...
 set JAVA_OPTS=-Xmx2g -Xms512m -XX:+UseG1GC -XX:MaxGCPauseMillis=200
-set CLASSPATH=lib/*;target/classes
+set CLASSPATH=target/classes
 echo SUCCESS: Runtime parameters configured
 
 :: Check admin privileges
