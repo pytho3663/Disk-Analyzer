@@ -1,0 +1,101 @@
+/* 主样式文件 */
+.root {
+    -fx-font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+    -fx-background-color: #fafafa;
+}
+
+/* 按钮样式 */
+.button {
+    -fx-background-color: #0078d4;
+    -fx-text-fill: white;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #106ebe;
+}
+
+.button:pressed {
+    -fx-background-color: #005a9e;
+}
+
+.button:disabled {
+    -fx-background-color: #f3f2f1;
+    -fx-text-fill: #a19f9d;
+    -fx-cursor: default;
+}
+
+/* 树形视图样式 */
+.tree-view {
+    -fx-background-color: white;
+    -fx-border-color: #e1dfdd;
+    -fx-border-radius: 4px;
+}
+
+.tree-cell {
+    -fx-padding: 4 8;
+    -fx-background-color: transparent;
+}
+
+.tree-cell:hover {
+    -fx-background-color: #f3f2f1;
+}
+
+.tree-cell:selected {
+    -fx-background-color: #deecf9;
+}
+
+/* 表格视图样式 */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #e1dfdd;
+    -fx-border-radius: 4px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #f3f2f1;
+    -fx-border-color: #e1dfdd;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 8 12;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #323130;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #f3f2f1 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #f3f2f1;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #deecf9;
+}
+
+/* 进度条样式 */
+.progress-bar {
+    -fx-accent: #0078d4;
+}
+
+/* 标签样式 */
+.label {
+    -fx-text-fill: #323130;
+}
+
+/* 分隔符样式 */
+.split-pane {
+    -fx-background-color: transparent;
+}
+
+.split-pane-divider {
+    -fx-background-color: #e1dfdd;
+    -fx-padding: 0 1;
+}

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="mainContainer" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.diskanalyzer.controller.MainController" spacing="10"
+      stylesheets="@styles.css">
+    
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    
+    <!-- 顶部控制面板 -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button fx:id="scanButton" text="选择目录扫描" onAction="#handleScanButton" 
+                style="-fx-font-size: 14px; -fx-padding: 8 16;"/>
+        <Button fx:id="cancelButton" text="取消扫描" onAction="#handleCancelButton" 
+                style="-fx-font-size: 14px; -fx-padding: 8 16;"/>
+        <ProgressBar fx:id="progressBar" visible="false" prefWidth="200"/>
+        <Label fx:id="statusLabel" text="就绪" style="-fx-font-size: 14px;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+    
+    <!-- 主要内容区域 -->
+    <SplitPane dividerPositions="0.3" VBox.vgrow="ALWAYS">
+        
+        <!-- 左侧树形视图 -->
+        <VBox spacing="5">
+            <Label text="目录结构" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <TreeView fx:id="fileTreeView" VBox.vgrow="ALWAYS"/>
+        </VBox>
+        
+        <!-- 右侧详细信息表格 -->
+        <VBox spacing="5">
+            <Label text="文件详情" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <TableView fx:id="fileTableView" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="nameColumn" text="名称" prefWidth="300">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="name"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    
+                    <TableColumn fx:id="sizeColumn" text="大小" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="formattedSize"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    
+                    <TableColumn fx:id="typeColumn" text="类型" prefWidth="120">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="type"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    
+                    <TableColumn fx:id="modifiedColumn" text="修改时间" prefWidth="150">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="formattedLastModified"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
+    </SplitPane>
+    
+    <!-- 底部状态栏 -->
+    <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #f0f0f0; -fx-padding: 5;">
+        <Label text="提示: 双击表格中的文件夹可跳转到对应目录" style="-fx-font-size: 12px; -fx-text-fill: #666;"/>
+    </HBox>
+    
+</VBox>
